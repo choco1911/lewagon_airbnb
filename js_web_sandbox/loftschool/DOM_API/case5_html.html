@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title> <!-- Node type: element -->
+    </head>
+    <body>
+    <!-- start of page --> <!-- Node type: text -->
+        <div id="container">
+            <!-- перенос строки, пробелы являются текстовыми узлами -->
+            Hello! <!-- Node type: text -->
+            <div class="c1">123</div>
+            привет!
+            <div class="c1 c2">123</div>
+        </div>
+    <script>
+        // Создает элементы в памяти, в при этом в дереве он никак отображаться
+        // не будет
+        var newElement = document.createElement('div');
+        var container = document.querySelector('#container');
+        // только после этого от будет добавлен на страницу (в DOM)
+        // добавляет элемент в конец
+        container.appendChild(newElement); // добавится пустой <div></div>
+
+        console.log(container);
+        //newElement.innerText = 'Hello!!!'; // innerText нет в Firefox!!!
+        // объекты передаются по ссылке
+        newElement.textContent = 'programm created <div>: Hello!!!';
+        console.log(container);
+        newElement.textContent = 'programm created <div>: Loftschool!!!';
+        console.log(container);
+
+        // Объект передается по ссылке: по сути это присваивание ничего не меняет
+        // манипуляции производятся с newElement
+        var newElement2 = newElement;
+        container.insertBefore(newElement2, container.firstChild);
+
+        // Удаление динамически созданного элемента из дерерва
+        container.removeChild(newElement2);
+        // Измнение объекта
+        var c1 = document.querySelector('.c1');
+        c1.textContent = 'Go Go Go!!!';
+
+        container.removeChild(c1);
+
+    </script>
+    </body>
+</html>
+<!-- какие фазы у DOM события ??? -->

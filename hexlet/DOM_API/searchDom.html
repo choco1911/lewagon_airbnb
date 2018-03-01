@@ -1,0 +1,59 @@
+<html>
+<head></head>
+<body>
+    <script>
+    document.documentElement.innerHTML = `
+        <head>
+        <title>Hello, World</title>
+        </head>
+        <body>
+        Start
+        <p>Paragraph</p>
+        <table>
+          <tr>
+            <th>1</th>
+            <th>2</th>
+          </tr>
+          <tr>
+            <td>
+              <ul>
+                <li>li</li>
+                <li>li</li>
+                <li>li</li>
+              </ul>
+            </td>
+            <td>
+              <p>Paragraph 2</p>
+            </td>
+          </tr>
+        </table>
+        <ul>
+          <li>li</li>
+        </ul>
+        </body>
+        `;
+        function search(doc, tagN) {
+            /*
+            if (doc.documentElement.tagName.toLowerCase() === 'html') {
+                return [doc.documentElement.tagName.toLowerCase()];
+            }
+            */
+            // 1. отделить тэги - html, body, head
+            //const html = doc.documentElement;
+            let arr = [];
+            for (var element of doc.children){
+                if (element.tagName.toLowerCase() === tagN) {
+                    arr = arr.concat(element);
+                }
+                if (element.children.length !== 0) {
+                    arr = arr.concat(search(element, tagN));
+                }
+            }
+            return arr;
+
+        }
+        console.log(search(document,'li'));
+
+    </script>
+</body>
+</html>

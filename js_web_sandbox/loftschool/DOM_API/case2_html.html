@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title> <!-- Node type: element -->
+    </head>
+    <body>
+    <!-- start of page --> <!-- Node type: text -->
+        <div id="container">
+            <!-- перенос строки, пробелы являются декстовыми узлами -->
+            Hello! <!-- Node type: text -->
+            <div id="i1">123</div> <!-- id should be uniq on page -->
+            <div class="c1">123</div>
+            <div class="c1">123</div>
+            <div class="c1 c2">123</div>
+        </div>
+    <script>
+    /*
+        var container = document.querySelector('#container');
+        console.log(container);
+
+        // возвращает узлы все узлы (в том числе текстовые и другие)
+        console.log(container.childNodes);
+
+        // возвращает только узлы типа элемент
+        console.log(container.children);
+    */
+        var element = document.querySelector('.c1');
+        /*
+        console.log(element.previousSibling); // #text // текстовый узел
+        console.log(element.nextSibling); // текстовый узел
+        */
+
+        console.log(element.nextElementSibling);
+        // https://developer.mozilla.org/ru/docs/Web/API/Node/nodeType
+        /*
+        console.log(element.nodeType);
+        */
+
+
+
+    </script>
+    </body>
+</html>
+
+<!-- какие фазы у DOM события ??? -->

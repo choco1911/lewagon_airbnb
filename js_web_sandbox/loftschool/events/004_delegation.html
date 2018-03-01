@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title> <!-- Node type: element -->
+    </head>
+    <body>
+        <ul id="list">
+            <li my-attr="1">1</li>
+            <li my-attr="2">2</li>
+            <li my-attr="3">3</li>
+            <li my-attr="4">4</li>
+            <li my-attr="5">5</li>
+            <li my-attr="6">6</li>
+            <li my-attr="7">7</li>
+            <li my-attr="8">8</li>
+            <li my-attr="9">9</li>
+            <li my-attr="10">10</li>
+        </ul>
+    <script>
+        // браузер автоматически создает пременные с идентификатором
+        // в продакшен не использовать. работает не везде
+        var list = document.querySelector('#list');
+        // Пример без использования делегирования
+        /*
+        for (var item of list.children) {
+            // console.log(item);
+            //item.addEventListener('click', function(e) { console.log(`click on ${e.target.attributes['my-attr'].value}`);});
+            item.addEventListener('click', function(e) { console.log(`click on ${e.target.getAttribute('my-attr')}`);});
+        }
+        */
+
+        // Делегирование - когда родительский элемент обрабатывает события дочерних элементов
+        list.addEventListener('click', function(e) { console.log(`click on ${e.target.getAttribute('my-attr')}`);});
+    </script>
+    </body>
+</html>
+<!-- какие фазы у DOM события ??? -->

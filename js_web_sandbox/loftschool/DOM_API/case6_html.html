@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title> <!-- Node type: element -->
+    </head>
+    <body>
+    <!-- start of page --> <!-- Node type: text -->
+        <div id="container">
+            <!-- перенос строки, пробелы являются декстовыми узлами -->
+            <div id="i1">321</div>
+            Hello! <!-- Node type: text -->
+            <div class="c1">123</div>
+            привет!
+            <div id="i2" class="c1 c2" style="color:red">123</div>
+        </div>
+    <script>
+        var i2 = document.querySelector('#i2');
+        console.log(i2);
+        console.log(i2.classList);
+        console.dir(i2);
+
+//        i2.classList.forEach(c => console.log(c));
+        i2.classList.add('c3');
+        console.log(i2.classList);
+        console.dir(i2.style);
+        console.dir(i2.style.color);
+        i2.style.color = 'blue';
+        // Историчски сложилось что tagName возвращает результат в верхнем регистре
+        // это нужно учитывать при сравнеии
+        console.dir(i2.tagName); // DIV
+
+        if (i2.parentElement.parentElement.tagName === 'BODY') {
+            console.log('YES');
+        }
+        console.log(i2.attributes);
+        // Доступ к атрибутам по точке работает не во всех браузерах
+        console.log(i2.attributes.style);
+        // В основном по индексам
+        console.log(i2.attributes[0]); 
+
+
+
+
+    </script>
+    </body>
+</html>
+<!-- какие фазы у DOM события ??? -->

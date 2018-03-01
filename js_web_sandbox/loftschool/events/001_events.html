@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title> <!-- Node type: element -->
+    </head>
+    <body>
+    <!-- start of page --> <!-- Node type: text -->
+        <div id="container">
+            <!-- перенос строки, пробелы являются текстовыми узлами -->
+            <!--
+            <div id="i1">321</div>
+            <div class="c1">Element c1</div>
+            <div class="c1">Element c1 </div>
+            <div id="i2" class="c1 c2" style="color:red">123</div>
+            -->
+            <!-- href="#" move the scroll position to the top -->
+            <!-- blank href="" will cause a page refresh -->
+
+            <a id="myLink" href="http://ya.ru">Click the link</a>
+            <!-- когда мы производим клик по ссылке браузер посылает информацию по всему дереву
+            html -> body -> div -> a -
+            эта фаза события называется фаза захвата или capturing (еще называют фазой погружени)
+            информация идет по кратчайшему пути до ссылки на которую мы кликнули, через <head>
+            информация не проходит. Информация идет по самому короткому пути, чтобы достигнуть элемента
+            на который мы кликнули
+        -->
+            <!-- Как только информация о событии дошла до элемента, на котором был произведен клик
+            выполняется некий код.
+            После этого событие начинает подниматься. Выполнять все действия выполненные на фазе погружения
+            только в обратном порядке a -> div -> body -> html (всплытие или bubbling)
+        -->
+        <!--
+            Только тогда, когда событие дошло до корня документа, обратно, выполняется действиe по умолчанию
+            window.location = event.target.href
+        -->
+
+        </div>
+    <script>
+        // click -> погружение -> выполнение (alert) -> всплытие -> действие по умоланию (переход по ссылке - http://ya.ru)
+        var myLink = document.querySelector('#myLink');
+        var callback1 = function() { alert('click on link!!!'); };
+        var callback2 = function() { alert('second time!!!'); };
+        // особенность addEventListener - можно добавлять несколько обработчиков
+        /*
+        myLink.addEventListener('click', function(){
+            alert('click on link!!!');
+        });
+        myLink.addEventListener('click', function(){
+            alert('second time!!!');
+        });
+        // можно удалять уже добавленные обработчики
+        myLink.removeEventListener('click')
+    */
+        myLink.addEventListener('click', callback1);
+        myLink.addEventListener('click', callback2);
+        // удаляем обработчик callback1
+        myLink.removeEventListener('click', callback1);
+
+</script>
+    </body>
+</html>
+<!-- какие фазы у DOM события ??? -->
