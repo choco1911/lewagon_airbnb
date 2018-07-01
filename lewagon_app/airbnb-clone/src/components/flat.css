@@ -1,0 +1,16 @@
+.flat {
+
+}
+
+.flat-picture {
+    height: 350px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: 1px dashed red;
+}
+
+.flat-title {
+    margin-top: 10px;
+    font-weight: bold;
+}
