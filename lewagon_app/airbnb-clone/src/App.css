@@ -20,9 +20,9 @@
 .flats {
     width: calc(100% - 40px);
     display: flex;
+    margin: 0 20px;
     flex-wrap: wrap;
     align-content: flex-start;
-    margin: 0 20px;
     border: 1px dotted green;
     justify-content: space-between;
 }
